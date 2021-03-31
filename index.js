@@ -1,6 +1,16 @@
 var VueEcharts_1;
 import { __decorate, __metadata } from "tslib";
-import * as echarts from 'echarts';
+import { use, init } from 'echarts/core';
+import { BarChart } from 'echarts/charts';
+import {
+    TooltipComponent,
+    GridComponent,
+    LegendComponent,
+    DataZoomComponent
+} from 'echarts/components';
+import {
+    SVGRenderer
+} from 'echarts/renderers';
 import ResizeObserver from 'resize-observer-polyfill';
 import { capitalize, h } from 'vue';
 import { Component, Inreactive, Prop, VueComponentBase, Watch } from 'vue3-component-base';
@@ -39,6 +49,9 @@ const Events = [
     'brush',
     'brushselected',
 ];
+use(
+    [BarChart, SVGRenderer, GridComponent, DataZoomComponent, TooltipComponent, LegendComponent]
+);
 let VueEcharts = VueEcharts_1 = class VueEcharts extends VueComponentBase {
     render() {
         return h('div', { class: 'vue-echarts' });
@@ -89,7 +102,7 @@ let VueEcharts = VueEcharts_1 = class VueEcharts extends VueComponentBase {
             this.chart.dispose();
             this.chart = undefined;
         }
-        const chart = echarts.init(this.$el, this.theme, this.initCfg);
+        const chart = init(this.$el, this.theme, this.initCfg);
         chart.group = this.groupId;
         this.chart = chart;
         this.refreshOption();
