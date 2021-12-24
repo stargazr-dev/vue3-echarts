@@ -1,7 +1,7 @@
 var VueEcharts_1;
 import { __decorate, __metadata } from "tslib";
 import { use, init } from 'echarts/core';
-import { BarChart } from 'echarts/charts';
+import { BarChart, LineChart } from 'echarts/charts';
 import {
     TooltipComponent,
     GridComponent,
@@ -50,7 +50,7 @@ const Events = [
     'brushselected',
 ];
 use(
-    [BarChart, SVGRenderer, GridComponent, DataZoomComponent, TooltipComponent, LegendComponent]
+    [BarChart, LineChart, SVGRenderer, GridComponent, DataZoomComponent, TooltipComponent, LegendComponent]
 );
 let VueEcharts = VueEcharts_1 = class VueEcharts extends VueComponentBase {
     render() {
@@ -135,7 +135,7 @@ __decorate([
 __decorate([
     Prop({
         default: () => ({
-            text: '努力加载中',
+            text: 'Default series',
             color: '#c23531',
             textColor: '#489CFF',
             spinnerRadius: 6,
